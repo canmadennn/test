@@ -341,6 +341,11 @@ module.exports = async (srv) => {
     return ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.run(req.query);
   });
 
+      srv.on('READ', 'GrievanceCompany', async (req) => {
+    return ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.run(req.query);
+  });
+
+
   srv.on('READ', 'UserRole', async (req) => {
     try {
       return await ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.run(req.query);

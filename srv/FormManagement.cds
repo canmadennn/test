@@ -533,5 +533,6 @@ service IncidentManagementForms {
   //! - Company Director-Manager IMB-102
   entity CompanyDirector         as projection on ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.ZBTP_EHS_DD_CPM_DRC;
   entity CompanyManager          as projection on ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.ZBTP_EHS_DD_CMP_MNG;
+    entity GrievanceCompany          as projection on ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.ZBTP_EHS_DD_GRVRC;
 
 }

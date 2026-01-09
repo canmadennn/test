@@ -48,6 +48,19 @@ entity ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.ZBTP_EHS_DD_CMP_MNG {
   zmanager_desc : String(255);
 };
 
+
+@cds.external : true
+@cds.persistence.skip : true
+@sap.content.version : '1'
+@sap.label : 'Grievance Company'
+entity ZBTP_EHS_INCIDENT_MANAGEMENT_SRV.ZBTP_EHS_DD_GRVRC {
+  @sap.label : 'Dil anahtarı'
+  key Spras : String(2) not null;
+  @sap.label : 'Sorumlu Şirketı'
+  key ZrspnsblCmp : String(30) not null;
+};
+
+
 @cds.external : true
 @cds.persistence.skip : true
 @sap.content.version : '1'
