@@ -1,0 +1,84 @@
+_schema-version: 3.3.0
+ID: zotc_incident_management
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install
+        - npx cds build --production
+
+
+
+modules:
+
+  - name: zotc_incident_management-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      readiness-health-check-type: http
+      readiness-health-check-http-endpoint: /health
+      disk-quota: 8192M
+      memory: 8192M
+    build-parameters:
+      before-all:
+        - builder: custom
+          commands:
+            - npm ci
+            - npx cds build --production
+      builder: npm
+    properties:
+      timeout: 500000
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+          forwardAuthToken: true
+    requires:
+      - name: zotc_incident_management-auth
+      - name: zotc_incident_management-connectivity
+      - name: zotc_incident_management-destination 
+
+  - name: zotc_incident_management
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 2048M
+      memory: 2048M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          timeout: 500000
+          forwardAuthToken: true
+      - name: zotc_incident_management-auth
+      - name: zotc_incident_management-destination
+      - name: zotc_incident_management-connectivity
+
+resources:
+  - name: zotc_incident_management-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: zotc_incident_management-${space}
+        tenant-mode: dedicated
+  - name: zotc_incident_management-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+  - name: zotc_incident_management-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

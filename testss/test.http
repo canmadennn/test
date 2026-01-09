@@ -1,0 +1,226 @@
+# GET http://localhost:4004/odata/v2/incident-management-forms/Department?$filter=zmanagement_key%20eq%20'PRD'
+
+###
+GET http://localhost:4004/odata/v4/incident-management-forms/InitialForm('INCD-AHH-2024-013')
+
+
+###
+GET http://localhost:4004/odata/v2/incident-management-forms/Management
+
+
+# POST http://localhost:4004/odata/v2/incident-management-forms/FlashForm
+# Content-Type: application/json
+
+# {
+#   "zreport_no": "INCD-AHH-2024-",
+#   "zmanagement":"OFS",
+#   "zdepartment":"DRL",
+#   "zfacility":"AHH",
+#   "zwell":"TUNA",
+#   "zincident_title":"BERBER",
+#   "zreport_date": null,
+#   "zreport_time": null,
+#   "zincident_date":"2024-11-14",
+#   "zincident_time":"11:38:00",
+#   "zincident_loc":"ISTANBUL",
+#   "zincident_class":"GRI",
+#   "zdrop":"",
+#   "zmedevac":"",
+#   "zincident_desc":"ASDASDADASDASDADA",
+#   "zcustom_text1":"",
+#   "zcustom_text2":"",
+#   "zcustom_text3":"",
+#   "zcustom_dec1": "",
+#   "zcustom_dec2": "",
+#   "zcustom_dec3": "",
+#   "erdat":null,
+#   "erzet":null,
+#   "ernam":"",
+#   "aedat":null,
+#   "aezet":null,
+#   "aenam":"",
+#   "status":"",
+#   "signfolderid": ""
+# }
+
+
+# GET http://localhost:4004/odata/v2/incident-management-forms/ZBTP_EHS_INC_STS?$filter=ZINC_STATUS%20eq%20%27C%27
+
+# PATCH http://localhost:4004/odata/v2/incident-management-forms/FlashForm('INCD-AHH-2024-077')
+# Content-Type: application/json
+
+# {
+#   "zwell": "AAAAAAAAAA",
+#   "zincident_title": "aaaaaaaaaaaa",
+#   "zincident_loc": "aaaaaaaaaaaaa",
+#   "zincident_class": "SEC",
+#   "zdrop": "",
+#   "zmedevac": "",
+#   "zincident_desc": "aaa11111111111111"
+# }
+
+# POST http://localhost:4004/odata/v2/incident-management-forms/FlashForm('INCD-AHH-2024-002')/CancelFlashReport
+
+# POST http://localhost:4004/odata/v2/incident-management-forms/InitialForm('INCD-OPE-2025-001')/SubmitInitialReport
+# GET http://localhost:4004/odata/v2/incident-management-forms/InitialForm('INCD-OPE-2025-001')/CheckSignature
+
+# PATCH http://localhost:4004/odata/v2/incident-management-forms/InitialForm('INCD-AHH-2024-019')
+# Content-Type: application/json
+
+# {
+#     "zreport_date":"2024-11-17",
+#     "zreport_time":"17:58:53",
+#     "zincident_class":"SEC",
+#     "zincident_type":"SC",
+#     "zincident_relevance":"2",
+#     "zincident_desc":"asda",
+#     "zmedevac":"",
+#     "zdrop":"X",
+#     "zinitial_findings":"asda",
+#     "zapproved_name":"",
+#     "zapproved_signature":"",
+#     "zapproved_date":null,
+#     "zreal_outcome":""
+# }
+
+# POST http://localhost:4004/odata/v2/incident-management-forms/InvestigationForm('INCD-ORS-2025-001')/UpdateInvestigationForm
+# Content-Type: application/json
+
+# {
+#   "FormDetails": {
+#         "zincident_desc"          : "LargeString",
+#         "zinitial_findings"       : "LargeString",
+#         "zapproved_name"          : "LargeString",
+#         "zapproved_signature"     : "LargeString",
+#         "zapproved_date"          : null,
+#         "zinvestigator_name"      : "LargeString",
+#         "zinvestigator_signature" : "LargeString",
+#         "zinvestigator_date"      : null,
+#         "zverification_name"      : "LargeString",
+#         "zverification_signature" : "LargeString",
+#         "zverification_date"      : null,
+#         "zcomp_name"              : "LargeString",
+#         "zinj_per_comp_key"       : "1",
+#         "zactivity"               : "LargeString",
+#         "zinc_det_desc"           : "LargeString",
+#         "zjob_undertaken"         : "LargeString",
+#         "zjra_no"                 : "LargeString",
+#         "zpermit_no"              : "LargeString",
+#         "zfindings"               : "LargeString",
+#         "zlessons"                : "LargeString"
+#   },
+#   "ImmediateActions":[{
+#       "zreport_no" : "INCD-ORS-2025-001",
+#       "zrow_no" : "",
+#       "zimm_act_taken" : "",
+#       "zresponsible_party" : ""
+#   }],
+#   "RootCauses":[{
+#       "zreport_no" : "INCD-ORS-2025-001",
+#       "zmrc_key" : "",
+#       "zrc_key" : "",
+#       "znote" : ""
+#   }],
+#   "InvTeam":[{
+#       "zreport_no" : "INCD-ORS-2025-001",
+#       "zrow_no" : 0,
+#       "zinvestigator_name" : "String(200)",
+#       "zcompany" : "LargeString",
+#       "zposition" : "LargeString"
+#   }],
+#   "InjuryPeople":[{
+#     "zreport_no":"INCD-ORS-2025-001",
+#     "idx":1,
+#     "name":"Tuna",
+#     "lastname":"Berber",
+#     "zposition":"1",
+#     "zexp_occu":"1",
+#     "zexp_pos": "1",
+#     "zdays_shift": "1",
+#     "ztour_time": "1.000"
+#   }],
+#   "BodyParts":[{
+#     "zreport_no": "INCD-ORS-2025-001",
+#     "idx":1,
+#     "zbody_key":"ARM"
+#   }]
+# }
+
+# POST http://localhost:4004/odata/v2/incident-management-forms/InitialForm('INCD-AHH-2024-077')/UpdateInitialForm
+# Content-Type: application/json
+
+# {
+#     "FormDetails": {
+#         "zincident_class": "SEC",
+#         "zincident_type": "SC",
+#         "zincident_relevance": "1",
+#         "zincident_desc": "Postman",
+#         "zmedevac": "",
+#         "zdrop": "",
+#         "zinitial_findings": "POSTMAN TEST",
+#         "zapproved_name": "",
+#         "zapproved_signature": "String",
+#         "zapproved_date": "2024-11-12",
+#         "zprepared_name"      : "LargeString",
+#         "zprepared_signature" : "LargeString",
+#         "zprepared_date"      : "2024-11-12",
+#         "zreal_outcome":  "AAA"
+#     },
+#     "PossibleCauses": [
+#         {
+#             "zreport_no": "INCD-AHH-2024-077",
+#             "mic_key": "1",
+#             "immediate_key": "1",
+#             "znote": ""
+#         },
+#         {
+#             "zreport_no": "INCD-AHH-2024-077",
+#             "mic_key": "1",
+#             "immediate_key": "10",
+#             "znote": ""
+#         }
+#     ],
+#     "ImmediateActions": [
+#         {
+#             "zreport_no": "INCD-AHH-2024-077",
+#             "zrow_no": 1,
+#             "zimm_act_taken": "DENEME",
+#             "zresponsible_party": "Tuna Berber"
+#         }
+#     ],
+#     "Consequences":[
+#         {
+#             "zreport_no": "INCD-AHH-2024-077",
+#             "zconsequences_key": "AAA",
+#             "zlikelihood": "AAA"
+#         }
+#     ]
+# }
+
+# GET http://localhost:4004/odata/v2/incident-management-forms/GetDMSFiles
+# Content-Type: application/json
+
+# {
+#     "zreport_no": "INCD-EPC-2025-001",
+#     "zinv": ""
+# }
+
+# GET http://localhost:4004/odata/v2/incident-management-forms/InvestigationForm('INCD-CON-2025-002')/CheckSignature
+
+
+###
+
+GET http://localhost:4004/odata/v2/incident-management-forms/InvestigationForm('INCD-CCD-2025-001')
+
+# POST http://localhost:4004/odata/v2/incident-management-forms/CreatePDF?zreport_no="INCD-PPW-2025-006"&formType="InvestigationForm"
+# GET http://localhost:4004/odata/v2/incident-management-forms/FlashForm_CreatePDF?zreport_no=INCD-PPW-2025-006
+# GET http://localhost:4004/odata/v2/incident-management-forms/InvestigationForm_CreatePDF?zreport_no=INCD-H2S-2025-003
+
+# Content-Type: application/json
+# {
+#   "zreport_no": "INCD-PPW-2025-006",
+#   "formType": "InvestigationForm"
+# }
+
+# GET http://localhost:4004/odata/v2/incident-management-forms/ManagementRolesSet?$filter=p_email%20eq%20'tuna.berber@s4c.com.tr'
+# GET http://localhost:4004/odata/v2/incident-management-forms/ManagementRoles('tuna.berber@s4c.com.tr')/Set

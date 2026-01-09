@@ -1,0 +1,117 @@
+{
+  "name": "zotc_incident_management",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.13.7",
+    "@sap-cloud-sdk/http-client": "^3.21.0",
+    "@sap-cloud-sdk/resilience": "^3.21.0",
+    "@sap/cds": "^8.6.0",
+    "@sap/textbundle": "^5.3.0",
+    "@sap/xssec": "^4.2.4",
+    "canvas": "^3.1.0",
+    "express": "^4",
+    "pdf-to-img": "^4.4.0",
+    "pdfjs-dist": "^4.2.67",
+    "@sap-cloud-sdk/connectivity": "^3"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@sap/cds-dk": "^8.6.1"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "fiori": {
+      "preview": true
+    },
+    "server": {
+      "index": true
+    },
+    "requires": {
+      "auth": "xsuaa",
+      "connectivity": true,
+      "destinations": true,
+      "forwardAuthToken": false,
+      "IncidentManagementDMS": {
+        "kind": "destination",
+        "credentials": {
+          "destination": "IncidentManagementDMS"
+        }
+      },
+      "ADS_SRV": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "ADS_SRV"
+        }
+      },
+      "obscard_spa": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sap_process_automation_service",
+          "path": "/public/workflow/rest"
+        }
+      },
+      "grievance_spa": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sap_process_automation_service",
+          "path": "/public/workflow/rest"
+        }
+      },
+      "Grievance_Forms": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sap_process_automation_service",
+          "path": "/public/workflow/rest"
+        }
+      },
+      "ProcessAutomationCAPService": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sap_process_automation_service",
+          "path": "/public/workflow/rest"
+        }
+      },
+      "[hybrid]": {
+        "auth": "xsuaa",
+        "restrict_all_services": false
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "restrict_all_services": false
+      },
+      "ZBTP_EHS_DD_OBS_CARD_CDS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_EHS_DD_OBS_CARD_CDS",
+        "[production]": {
+          "credentials": {
+            "auth": "mocked",
+            "forwardAuthToken": "false",
+            "destination": "tpotcs4dev",
+            "path": "/sap/opu/odata/sap/ZBTP_EHS_DD_OBS_CARD_CDS"
+          }
+        },
+        "csrf": false,
+        "csrfInBatch": false
+      },
+      "ZBTP_EHS_INCIDENT_MANAGEMENT_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZBTP_EHS_INCIDENT_MANAGEMENT_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "tpotcs4dev",
+            "path": "/sap/opu/odata/sap/ZBTP_EHS_INCIDENT_MANAGEMENT_SRV",
+            "timeout": 50000
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      }
+    }
+  }
+}
